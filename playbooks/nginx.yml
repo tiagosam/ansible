@@ -1,0 +1,19 @@
+- name: Instalacao do NGINX e Remocao do Apache
+  hosts: all
+  tasks:
+    - name: Desinstala o servidor web nas maquinas ubuntu
+      apt:
+        name: apache2
+        state: absent
+      when: ansible_os_family == 'Debian'
+
+    - name: Desinstala o servidor web nas maquinas redhat
+      yum:
+        name: httpd
+        state: absent
+      when: ansible_os_family == 'RedHat'
+
+    - name: Instala o NGINX nas máquinas
+      package: 
+        name: nginx
+        state: present

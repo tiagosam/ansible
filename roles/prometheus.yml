@@ -1,0 +1,5 @@
+--- 
+- name: Instala o prometheus 
+  hosts: docker
+  roles: 
+    - ansible-prometheus

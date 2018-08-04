@@ -1,0 +1,14 @@
+---
+# tasks file for docker
+
+- name: Docker
+  hosts: docker
+  tasks: 
+    - name: Remove pacotes antigos
+      apt: 
+        name: "{{ item }}"
+        state: absent
+      with_items: 
+        - docker
+        - docker-engine
+        - docker-io

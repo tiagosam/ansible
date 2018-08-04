@@ -1,0 +1,14 @@
+---
+- name: Instala o repositorio para o Debian
+  apt: 
+    deb: https://apt.puppetlabs.com/puppet5-release-xenial.deb
+    state: present
+  when: ansible_os_family == 'Debian'
+ 
+- name: Instala o repositorio para o Yum
+  yum:
+    name: https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm 
+    state: present
+  when: ansible_os_family == 'RedHat'
+ 
+
